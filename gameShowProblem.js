@@ -1,5 +1,4 @@
 const playTheGame = (willSwitch) => {
-    const DOORS = [0, 1, 2];
 
     const doorWithCar = Math.floor(Math.random() * DOORS.length);
     const selectedDoor = Math.floor(Math.random() * DOORS.length);
@@ -20,5 +19,13 @@ const simulateGameShow = (noOfIterations, willSwitch) => {
     return gamesWon;
 };
 
-console.log(simulateGameShow(1000, willSwitch = true));
-console.log(simulateGameShow(1000, willSwitch = false));
+const DOORS = [0, 1, 2];
+const ITERATIONS = 1000;
+
+const gamesWonIfSwitched = simulateGameShow(ITERATIONS, willSwitch = true);
+const percentageOfWinsIfSwitched = ((gamesWonIfSwitched/1000) * 100).toFixed(2);
+const gamesWonIfNotSwitched = simulateGameShow(ITERATIONS, willSwitch = false);
+const percentageOfWinsIfNotSwitched = ((gamesWonIfNotSwitched/1000) * 100).toFixed(2);
+
+console.log(`Stay: Count ${gamesWonIfNotSwitched}/${ITERATIONS} - ${percentageOfWinsIfNotSwitched}%`);
+console.log(`Switch: Count ${gamesWonIfSwitched}/${ITERATIONS} - ${percentageOfWinsIfSwitched}%`);
